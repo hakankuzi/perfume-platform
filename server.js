@@ -22,6 +22,7 @@ app.use("/api", countryRoutes);
 app.use(apiErrorHandler);
 
 // db connection
+mongoose.set("strictQuery", true);
 mongoose
   .connect(process.env.MONGO_URL)
   .then((result) => {

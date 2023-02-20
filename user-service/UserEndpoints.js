@@ -7,6 +7,14 @@ const UserResponse = require("./dto/response/UserResponse");
 const UserDetailResponse = require("./dto/response/UserDetailResponse");
 const router = Router();
 
+router.get("/healthcheck", async (req, res) => {
+  try {
+    res.status(200).json({ status: "online", environment: "development" });
+  } catch (err) {
+    next(ApiError.badRequest(err.message));
+  }
+});
+
 router.post("/me", requireAuth, async (req, res) => {
   try {
     const user = req.decodedToken.user;
