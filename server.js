@@ -18,8 +18,9 @@ app.use("/api", brandRoutes);
 app.use("/api", perfumeRoutes);
 app.use("/api", accordRoutes);
 app.use("/api", countryRoutes);
-
 app.use(apiErrorHandler);
+
+app.get("/", (req, res) => res.send("Apis are ready!"));
 
 // db connection
 mongoose.set("strictQuery", true);
