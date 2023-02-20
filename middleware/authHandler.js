@@ -2,8 +2,7 @@ const jwt = require("jsonwebtoken");
 const ApiError = require("../exception/ApiError");
 
 const requireAuth = (req, res, next) => {
-  const token = req.body.token;
-
+  const token = req.headers.authorization;
   // check json web token exists & is verified
   jwt.verify(token, process.env.JWT_SECRET_KEY, (err, decodedToken) => {
     if (err) {
